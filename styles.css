@@ -70,8 +70,9 @@ body {
     background-image: url('full.avif');
     background-size: cover;  
     background-position: center; 
-    background-repeat: no-repeat;  
-    height: 100%; 
+    background-repeat: no-repeat; 
+
+     
 }
 
 .container h2, .container h3 {
@@ -123,8 +124,3 @@ footer {
     transform: scale(1.05); 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.photo {
-    width: 200px; 
-    height: 200px; 
-    object-fit: cover; /
-  }
