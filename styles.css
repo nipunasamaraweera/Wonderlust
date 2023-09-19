@@ -67,11 +67,11 @@ body {
 }
 
 .travel-image {
-    background-image: url('full.avif');
+    background-image: url('images/Travel.png');
     background-size: cover;  
     background-position: center; 
     background-repeat: no-repeat;  
-    height: 100%; 
+    height: 90%; 
 }
 
 .container h2, .container h3 {
