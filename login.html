@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="It is a simple product landing website" />
+    <meta name="keywords" content="PixelWave" />
+
+    <!--====== TITLE TAG ======-->
+    <title>WanderTravel</title>
+
+    <!--====== STYLESHEETS =======-->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/icofont.css">
+    <link rel="stylesheet" href="assets/css/venobox.min.css">
+
+    <!--====== OWL CAROUSEL STYLESHEETS ======-->
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+
+    <!--====== MAIN STYLESHEETS ======-->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/responsive.css" rel="stylesheet">
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        function handleLogin() {
+            var email = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            firebase.auth().signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Signed in 
+                    var user = userCredential.user;
+                    console.log('User signed in:', user);
+                })
+                .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.log('Error:', errorCode, errorMessage);
+                });
+        }
+    </script>
+</head>
+
+<body data-spy="scroll" data-target="#main-nav" data-offset="60">
+
+    <!--START TOP AREA-->
+    <nav class="navbar navbar-expand-lg site-navigation fixed-top app-nav">
+        <div class="container">
+            <a class="navbar-brand page-scroll" href="#"><img src="assets/img/w_logo_1.png" alt="s-box"
+                    class="img-fluid"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
+            </button>
+
+            <div class="collapse navbar-collapse " id="navbarNav">
+                <ul class="navbar-nav ">
+                    <li class="nav-item">
+                        <a class="nav-link " href="index-3.html">Home</a>
+                    </li>
+                </ul>
+    </nav>
+    <!--END TOP AREA-->
+
+    <!--BANNER AREA START-->
+    <section id="home">
+        <div class="banner-bg-app p-3 p-md-5">
+            <div class="container">
+                <div class="row">
+                    <div class="signup-container">
+                        <h1>Login</h1>
+                        <form onsubmit="event.preventDefault(); handleLogin();">
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" name="username" required><br>
+
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" required><br>
+
+                            <input type="submit" value="Login">
+                        </form>
+                        <br>
+                        <p>Not a user?</p> <a href="signup.html" class="btn btn-feature btn-circled">Sign Up<i
+                                class="fa fa-angle-double-right"></i></a>
+                    </div>
+
+                    <div class="col-lg-5 col-sm-12 d-sm-none d-lg-block d-md-none text-right">
+                        <div class="banner-app-img app-padding">
+                            <img src="assets/img/New folder/img_01-01.png" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--BANNER AREA END-->
+
+    <!--====== SCRIPTS JS ======-->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/vendor/popper.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+
+    <!--====== PLUGINS JS ======-->
+
+    <script src="assets/js/waypoints.min.js"></script>
+    <script src="assets/js/scrollit.js"></script>
+    <script src="assets/js/owl-carousel.2.3.0.min.js"></script>
+    <script src="assets/js/venobox.min.js"></script>
+
+    <!--===== Custom ACTIVE JS=====-->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
