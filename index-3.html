@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="It is a simple product landing website" />
+    <meta name="keywords" content="PixelWave" />
+
+
+    <!--====== TITLE TAG ======-->
+    <title>WanderTravel</title>
+
+
+    <!--====== STYLESHEETS =======-->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/icofont.css">
+    <link rel="stylesheet" href="assets/css/venobox.min.css">
+
+    <!--====== OWL CAROUSEL STYLESHEETS ======-->
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+
+    <!--====== MAIN STYLESHEETS ======-->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/responsive.css" rel="stylesheet">
+
+</head>
+
+<body data-spy="scroll" data-target="#main-nav" data-offset="60">
+
+    <!--START TOP AREA-->
+    <nav class="navbar navbar-expand-lg site-navigation fixed-top app-nav">
+        <div class="container">
+            <a class="navbar-brand page-scroll" href="#"><img src="assets/img/w_logo_1.png" alt="s-box"
+                    class="img-fluid"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
+            </button>
+
+            <div class="collapse navbar-collapse " id="navbarNav">
+                <ul class="navbar-nav ">
+                    <li class="nav-item">
+                        <a class="nav-link " href="#" data-scroll-nav="0">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="#planner" data-scroll-nav="1">Planner</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="#feature" data-scroll-nav="2">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="#gallery" data-scroll-nav="5">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="how-it-works.html">How It Works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="pricing.html">Packages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="#footer-area" data-scroll-nav="6">Contact</a>
+                    </li>
+                </ul>
+    </nav>
+    <!--END TOP AREA-->
+
+    <!--BANNER AREA START-->
+    <section id="home">
+        <div class="banner-bg-app p-3 p-md-5" data-scroll-index="0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-sm-12">
+                        <div class="app-banner-content ">
+                            <h5 class="subtitle">WANDERTRAVEL</h5>
+                            <h1 class="lg-title">Every trip in one place</h1>
+                            <p>WANDERTRAVEL, helps you keep track of your flights, hotels, car
+                                rentals, confirmation numbers, and other details all in one place so you
+                                don't have to search through multiple emails or apps to find what you need.</p>
+                            <a href="signup.html" class="btn btn-feature btn-circled">Sign Up<i
+                                    class="fa fa-angle-double-right"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5 col-sm-12 d-sm-none d-lg-block d-md-none text-right">
+                        <div class="banner-app-img app-padding">
+                            <img src="assets/img/app/Travel.png" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--BANNER AREA END-->
+
+    <!--PLANNER AREA START-->
+    <section id="planner" data-scroll-index="1">
+        <div class="container">
+            <div class="itinerary-planner">
+                <div class="heading text-center">
+                    <h2 class="md-title">ITINERARY PLANNER</h2>
+                </div>
+                <form>
+                    <div class="form-group">
+                        <label for="destination">Destination:</label>
+                        <select class="form-control" id="destination">
+                            <option>Sydney, Australia</option>
+                            <option>Paris, France</option>
+                            <option>Tokyo, Japan</option>
+                            <option>New York, USA</option>
+                            <option>Rome, Italy</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="startDate">Start Date:</label>
+                            <input type="date" class="form-control" id="startDate">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="endDate">End Date:</label>
+                            <input type="date" class="form-control" id="endDate">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="travelerType">Traveler Type:</label>
+                        <select class="form-control" id="travelerType">
+                            <option>Solo</option>
+                            <option>Couple</option>
+                            <option>Family</option>
+                            <option>Group</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="adults">Adults:</label>
+                            <input type="number" class="form-control" id="adults" placeholder="0">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="teens">Teens:</label>
+                            <input type="number" class="form-control" id="teens" placeholder="0">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="kids">Kids:</label>
+                            <input type="number" class="form-control" id="kids" placeholder="0">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Plan My Trip</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!--PLANNER AREA END-->
+
+    <!--FEATURE AREA START-->
+    <section id="feature" data-scroll-index="2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-sm-12 m-auto">
+                    <div class="heading text-center">
+                        <h5 class="subtitle">WanderTravel</h5>
+                        <h2 class="md-title">SERVICES</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-sm-6">
+                    <div class="app-feature-box">
+                        <!-- <i class="fa fa-mobile"></i> -->
+                        <h4>Traveler Profile</h4>
+                        <!-- <a href="#" class="learn-more">read more</a> -->
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="app-feature-box">
+                        <!--  <i class="fa fa-code"></i> -->
+                        <h4>Flight Ratings</h4>
+                        <!-- <a href="#" class="learn-more">read more</a> -->
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="app-feature-box">
+                        <!--  <i class="fa fa-search"></i> -->
+                        <h4>Airport Maps</h4>
+                        <!-- <a href="#" class="learn-more">read more</a> -->
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="app-feature-box">
+                        <!--  <i class="fa fa-envelope-o"></i> -->
+                        <h4>Neighborhood Safety</h4>
+                        <!-- <a href="#" class="learn-more">read more</a> -->
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="app-feature-box">
+                        <!-- <i class="fa fa-desktop"></i> -->
+                        <h4>Documents</h4>
+                        <!-- <a href="#" class="learn-more">read more</a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--FEATURE AREA END-->
+
+    <!-- GALLERY AREA START-->
+    <section id="gallery" data-scroll-index="5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 m-auto col-sm-12">
+                    <div class="heading text-center">
+                        <h5 class="subtitle">WanderTravel</h5>
+                        <h2 class="md-title">Gallery</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="gallery-item owl-carousel owl-theme">
+                    <div class="gallery-img">
+                        <img src="assets/img/gallery/show-1.jpg" alt="" class="img-fluid">
+                    </div>
+                    <div class="gallery-img">
+                        <img src="assets/img/gallery/show-2.jpg" alt="" class="img-fluid">
+                    </div>
+                    <div class="gallery-img">
+                        <img src="assets/img/gallery/show-3.jpg" alt="" class="img-fluid">
+                    </div>
+                    <div class="gallery-img">
+                        <img src="assets/img/gallery/show-4.jpg" alt="" class="img-fluid">
+                    </div>
+                    <div class="gallery-img">
+                        <img src="assets/img/gallery/show-3.jpg" alt="" class="img-fluid">
+                    </div>
+                    <div class="gallery-img">
+                        <img src="assets/img/gallery/show-2.jpg" alt="" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- GALLERY AREA END-->
+
+
+    <!--FOOTER AREA-->
+    <footer id="footer-area" class="" data-scroll-index="6">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer-top-area">
+                        <h3>Avaliable at</h3>
+
+                        <div class="row">
+                            <div class="col-lg-4 col-sm-4">
+                                <div class="footer-contact">
+                                    <div class="footer-icon">
+                                        <i class="icofont icofont-map-pins"></i>
+                                    </div>
+                                    <h4>Main Office</h4>
+                                    <p>22 Suemar St, Mulgrave VIC 3170</p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-sm-4">
+                                <div class="footer-contact">
+                                    <div class="footer-icon">
+                                        <i class="icofont icofont-mobile-phone"></i>
+                                    </div>
+                                    <h4>Contact now</h4>
+                                    <p>+61 451810298</p>
+                                    <p>+61 421961250</p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-sm-4">
+                                <div class="footer-contact">
+                                    <div class="footer-icon">
+                                        <i class="icofont icofont-envelope"></i>
+                                    </div>
+                                    <h4>Email us</h4>
+                                    <p>customersupport@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 col-sm-8">
+                    <div class="footer-content">
+
+                        <h6 class="copy"> &copy; copyrights reserved. 2023</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--FOOTER AREA END-->
+
+
+    <!--====== SCRIPTS JS ======-->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/vendor/popper.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+
+    <!--====== PLUGINS JS ======-->
+
+    <script src="assets/js/waypoints.min.js"></script>
+    <script src="assets/js/scrollit.js"></script>
+    <script src="assets/js/owl-carousel.2.3.0.min.js"></script>
+    <script src="assets/js/venobox.min.js"></script>
+
+    <!--===== Custom ACTIVE JS=====-->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
