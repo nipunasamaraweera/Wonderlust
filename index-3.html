@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/icofont.css">
     <link rel="stylesheet" href="assets/css/venobox.min.css">
+    <link rel="stylesheet" href="assets/css/err.css">
 
     <!--====== OWL CAROUSEL STYLESHEETS ======-->
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
@@ -27,6 +28,9 @@
     <!--====== MAIN STYLESHEETS ======-->
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/responsive.css" rel="stylesheet">
+
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
 
 </head>
 
@@ -102,57 +106,80 @@
         <div class="container">
             <div class="itinerary-planner">
                 <div class="heading text-center">
-                    <h2 class="md-title">ITINERARY PLANNER</h2>
-                </div>
-                <form>
+                    <h3>Itinerary Planner</h3>
+            
+                <form id="myForm">
                     <div class="form-group">
                         <label for="destination">Destination:</label>
-                        <select class="form-control" id="destination">
+                        <select class="form-control" id="destination" required>
+                            <option value="">Select a destination</option>
                             <option>Sydney, Australia</option>
                             <option>Paris, France</option>
                             <option>Tokyo, Japan</option>
                             <option>New York, USA</option>
                             <option>Rome, Italy</option>
                         </select>
+                        <span id="destination-error" class="error-message"></span>
                     </div>
-
+            
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="startDate">Start Date:</label>
-                            <input type="date" class="form-control" id="startDate">
+                            <input type="date" class="form-control" id="startDate" required>
+                            <span id="startDate-error" class="error-message"></span>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="endDate">End Date:</label>
-                            <input type="date" class="form-control" id="endDate">
+                            <input type="date" class="form-control" id="endDate" required>
+                            <span id="endDate-error" class="error-message"></span>
                         </div>
                     </div>
-
+            
                     <div class="form-group">
                         <label for="travelerType">Traveler Type:</label>
-                        <select class="form-control" id="travelerType">
+                        <select class="form-control" id="travelerType" required>
+                            <option value="">Select a traveler type</option>
                             <option>Solo</option>
                             <option>Couple</option>
                             <option>Family</option>
                             <option>Group</option>
                         </select>
+                        <span id="travelerType-error" class="error-message"></span>
                     </div>
-
+            
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="adults">Adults:</label>
-                            <input type="number" class="form-control" id="adults" placeholder="0">
+                            <input type="number" class="form-control" id="adults" placeholder="0" required>
+                            <span id="adults-error" class="error-message"></span>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="teens">Teens:</label>
-                            <input type="number" class="form-control" id="teens" placeholder="0">
+                            <input type="number" class="form-control" id="teens" placeholder="0" required>
+                            <span id="teens-error" class="error-message"></span>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="kids">Kids:</label>
-                            <input type="number" class="form-control" id="kids" placeholder="0">
+                            <input type="number" class="form-control" id="kids" placeholder="0" required>
+                            <span id="kids-error" class="error-message"></span>
                         </div>
                     </div>
-
-                    <button type="submit" class="btn btn-primary">Plan My Trip</button>
+            
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" required>
+                        <span id="email-error" class="error-message"></span>
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="contactNumber">Contact Number:</label>
+                        <input type="tel" class="form-control" id="contactNumber" required>
+                        <span id="contactNumber-error" class="error-message"></span>
+                    </div>
+            
+                    
+            
+                    <button type="submit" id="submit_msg" class="btn btn-primary" >Plan My Trip</button>
                 </form>
             </div>
         </div>
@@ -322,6 +349,80 @@
 
     <!--===== Custom ACTIVE JS=====-->
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/Validate.js"></script>
+    
+    
+    <script type="text/javascript">
+        (function() {
+          var  firebaseConfig = {
+            apiKey: "AIzaSyAwnFhsb8czP_Gnva5O1Y-APrcKAf7Q6kM",
+            authDomain: "travel-20bf9.firebaseapp.com",
+            projectId: "travel-20bf9",
+            storageBucket: "travel-20bf9.appspot.com",
+            messagingSenderId: "154085552320",
+            appId: "1:154085552320:web:925c0611d58ab5ef7bfd25",
+            measurementId: "G-8MT43F6CGX"
+          };
+    
+        firebase.initializeApp(firebaseConfig);
+    
+        var push_to_firebase = function(data) {
+          alert("Thanks for Filling Form. We'll  get back to you as soon as possible.");
+          var db = firebase.firestore();
+    
+          db.collection("Planner").add({
+            destination: data["destination"],
+            startDate: data["startDate"],
+            endDate: data["endDate"],
+            travelerType: data["travelerType"],
+            adults: data["adults"],
+            teens: data["teens"],
+            kids: data["kids"],
+            email: data["email"],
+            contactNumber: data["contactNumber"],
+            timestamp: Date.now()
+          })
+          .then(function(docRef) {
+            console.log("Message sent, ID: ", docRef.id);
+            location.reload();
+          })
+          .catch(function(error) {
+            console.error("Message could not be sent: ", error);
+          });
+        };
+    
+        var contact_submit = function(e) {
+          e.preventDefault(); 
+    
+          var destination = document.getElementById("destination");
+          var startDate = document.getElementById("startDate");
+          var endDate = document.getElementById("endDate");
+          var travelerType = document.getElementById("travelerType");
+          var adults = document.getElementById("adults");
+          var teens = document.getElementById("teens");
+          var kids = document.getElementById("kids");
+          var email = document.getElementById("email");
+          var contactNumber = document.getElementById("contactNumber");
+          
+    
+          var data = {
+            "destination": destination.value,
+            "startDate": startDate.value,
+            "endDate": endDate.value,
+            "travelerType": travelerType.value,
+            "adults": adults.value,
+            "teens": teens.value,
+            "kids": kids.value,
+            "email": email.value,
+            "contactNumber": contactNumber.value
+          };
+    
+          push_to_firebase(data);
+        };
+    
+        document.getElementById("submit_msg").addEventListener("click", contact_submit);
+      })();
+    </script>
 </body>
 
 </html>
