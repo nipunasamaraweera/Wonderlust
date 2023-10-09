@@ -14,6 +14,53 @@ document.addEventListener("DOMContentLoaded", function () {
         validateContactNumber(contactNumberInput);
     });
 
+
+    // Get references to the input fields, total, and error message elements
+const adultsInput = document.getElementById('adults');
+const teensInput = document.getElementById('teens');
+const kidsInput = document.getElementById('kids');
+const totalElement = document.getElementById('total');
+const totalError = document.getElementById('total-error');
+
+// Add blur event listeners to input fields for validation
+adultsInput.addEventListener('blur', updateTotalAndValidate);
+teensInput.addEventListener('blur', updateTotalAndValidate);
+kidsInput.addEventListener('blur', updateTotalAndValidate);
+
+// Function to update the total and perform validation
+function updateTotalAndValidate() {
+    const adultsValue = parseInt(adultsInput.value) || 0;
+    const teensValue = parseInt(teensInput.value) || 0;
+    const kidsValue = parseInt(kidsInput.value) || 0;
+
+    const total = adultsValue + teensValue + kidsValue;
+
+    // Update the total display
+    totalElement.textContent = `Total: ${total}`;
+
+    // Check for validation errors
+    if (total <= 0) {
+        totalError.textContent = 'Total must be greater than 0.';
+    } else {
+        totalError.textContent = ''; // Clear the total error message
+    }
+
+    if (adultsValue < 0 || teensValue < 0 || kidsValue < 0) {
+        totalError.textContent = 'All fields must be non-negative.';
+    }
+
+    if (adultsValue < 0 || teensValue > 0 || kidsValue > 0) {
+        totalError.textContent = 'To add Kids or Teens you need to add adults ';
+    }
+else {
+    totalError.textContent = ''; // Clear the total error message
+}
+}
+
+
+
+
+
     // startDateInput.addEventListener("blur", function () {
     //     validateDates();
     // });
@@ -104,3 +151,5 @@ document.addEventListener("DOMContentLoaded", function () {
         return contactNumberPattern.test(contactNumber);
     }
 });
+
+

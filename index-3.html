@@ -4,9 +4,9 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="It is a simple product landing website" />
-    <meta name="keywords" content="PixelWave" />
+    <meta name="Wonderlust" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="It is a simple Travel budget webapp" />
+    <meta name="keywords" content="Wonderlust" />
 
 
     <!--====== TITLE TAG ======-->
@@ -139,36 +139,42 @@
                         </div>
                     </div>
             
-                    <div class="form-group">
-                        <label for="travelerType">Traveler Type:</label>
-                        <select class="form-control" id="travelerType" required>
-                            <option value="">Select a traveler type</option>
-                            <option>Solo</option>
-                            <option>Couple</option>
-                            <option>Family</option>
-                            <option>Group</option>
-                        </select>
-                        <span id="travelerType-error" class="error-message"></span>
-                    </div>
+                    
+                    
             
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="adults">Adults:</label>
-                            <input type="number" class="form-control" id="adults" placeholder="0" required>
+                            <input type="number" class="form-control" id="adults" placeholder="0" min="0" required>
                             <span id="adults-error" class="error-message"></span>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="teens">Teens:</label>
-                            <input type="number" class="form-control" id="teens" placeholder="0" required>
+                            <input type="number" class="form-control" id="teens" placeholder="0" min="0" required>
                             <span id="teens-error" class="error-message"></span>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="kids">Kids:</label>
-                            <input type="number" class="form-control" id="kids" placeholder="0" required>
+                            <input type="number" class="form-control" id="kids" placeholder="0" min="0" required>
                             <span id="kids-error" class="error-message"></span>
                         </div>
                     </div>
-            
+                    <span id="total-error" class="error-message"></span>
+                    <span id="total">Total: 0</span>
+                    
+                    <div class="form-group">
+                        <label for="travelerType">Traveler Type:</label>
+                        <select class="form-control" id="travelerType" required>
+                            <option value="">Select a traveler type</option>
+                            <option value="solo">Solo</option>
+                            <option value="couple">Couple</option>
+                            <option value="family">Family</option>
+                            <option value="group">Group</option>
+                        </select>
+                        <span id="travelerType-error" class="error-message"></span>
+                    </div>
+
+
                     <div class="form-group">
                         <label for="email">Email:</label>
                         <input type="email" class="form-control" id="email" required>
