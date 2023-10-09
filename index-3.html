@@ -411,35 +411,83 @@
         };
     
         var contact_submit = function(e) {
-          e.preventDefault(); 
-    
-          var destination = document.getElementById("destination");
-          var startDate = document.getElementById("startDate");
-          var endDate = document.getElementById("endDate");
-          var travelerType = document.getElementById("travelerType");
-          var adults = document.getElementById("adults");
-          var teens = document.getElementById("teens");
-          var kids = document.getElementById("kids");
-          var email = document.getElementById("email");
-          var contactNumber = document.getElementById("contactNumber");
-          
-    
-          var data = {
-            "destination": destination.value,
-            "startDate": startDate.value,
-            "endDate": endDate.value,
-            "travelerType": travelerType.value,
-            "adults": adults.value,
-            "teens": teens.value,
-            "kids": kids.value,
-            "email": email.value,
-            "contactNumber": contactNumber.value
-          };
-    
-          push_to_firebase(data);
+            e.preventDefault(); 
+        
+            var destination = document.getElementById("destination");
+            var startDate = document.getElementById("startDate");
+            var endDate = document.getElementById("endDate");
+            var travelerType = document.getElementById("travelerType");
+            var adults = document.getElementById("adults");
+            var teens = document.getElementById("teens");
+            var kids = document.getElementById("kids");
+            var email = document.getElementById("email");
+            var contactNumber = document.getElementById("contactNumber");
+const functions = require("firebase-functions");
+const admin = require("firebase-admin");
+const nodemailer = require("nodemailer");
+
+admin.initializeApp();
+
+exports.sendEmail = functions.firestore
+    .document("Planner/{plannerId}")
+    .onCreate((snap, context) => {
+        const data = snap.data();
+
+        // Set up a Nodemailer transport
+        const transporter = nodemailer.createTransport({
+            service: "Gmail",
+            auth: {
+                user: "your-email@gmail.com", // Your Gmail email address
+                pass: "your-password", // Your Gmail password or app-specific password
+            },
+        });
+
+        // Define email content
+        const mailOptions = {
+            from: "your-email@gmail.com",
+            to: "recipient-email@example.com",
+            subject: "New Planner Data",
+            text: `New Planner Data Submitted:\n
+                   Destination: ${data.destination}\n
+                   Start Date: ${data.startDate}\n
+                   End Date: ${data.endDate}\n
+                   ...`, // Include other relevant data
         };
-    
+
+        // Send the email
+        return transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.error("Error sending email:", error);
+                return;
+            }
+            console.log("Email sent:", info.response);
+        });
+    });
+
+            // If there are no validation errors, display a confirmation dialog
+            const confirmation = confirm("Are you sure you want to submit the form?");
+            
+            // If the user confirms, proceed to submit the form
+            if (confirmation) {
+                var data = {
+                    "destination": destination.value,
+                    "startDate": startDate.value,
+                    "endDate": endDate.value,
+                    "travelerType": travelerType.value,
+                    "adults": adults.value,
+                    "teens": teens.value,
+                    "kids": kids.value,
+                    "email": email.value,
+                    "contactNumber": contactNumber.value
+                };
+                push_to_firebase(data);
+            } else {
+                // If the user cancels, do nothing
+            }
+        };
+        
         document.getElementById("submit_msg").addEventListener("click", contact_submit);
+        
       })();
     </script>
 </body>
