@@ -46,21 +46,32 @@
         firebase.initializeApp(firebaseConfig);
 
         function handleSignup() {
-            var email = document.getElementById('email').value;
-            var password = document.getElementById('password').value;
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+        var confirmPassword = document.getElementById('confirm-password').value;
 
-            firebase.auth().createUserWithEmailAndPassword(email, password)
-                .then((userCredential) => {
-                    // Signed in 
-                    var user = userCredential.user;
-                    console.log('User signed up:', user);
-                })
-                .catch((error) => {
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    console.log('Error:', errorCode, errorMessage);
-                });
+        // Check if passwords match
+        if (password !== confirmPassword) {
+            alert('Passwords do not match.');
+            return;
         }
+
+        // Firebase registration
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                // Signed in 
+                var user = userCredential.user;
+                alert('Successfully signed up!'); // Feedback to user
+                console.log('User signed up:', user);
+            })
+            .catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                alert('Error: ' + errorMessage); // Feedback to user
+                console.log('Error:', errorCode, errorMessage);
+            });
+    }
+
     </script>
 </head>
 

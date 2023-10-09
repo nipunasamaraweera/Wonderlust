@@ -31,6 +31,8 @@
 
     <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-auth.js"></script>
+
 
 </head>
 
@@ -70,6 +72,8 @@
                         <a class="nav-link " href="#footer-area" data-scroll-nav="6">Contact</a>
                     </li>
                 </ul>
+                <span id="userDisplay" class="navbar-text ml-auto"></span> <!-- This is where the username will be displayed -->
+
     </nav>
     <!--END TOP AREA-->
 
@@ -365,7 +369,16 @@
           };
     
         firebase.initializeApp(firebaseConfig);
-    
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                // User is signed in.
+                document.getElementById("userDisplay").textContent = user.email;
+            } else {
+                // No user is signed in.
+                document.getElementById("userDisplay").textContent = "";
+            }
+        });
+
         var push_to_firebase = function(data) {
           alert("Thanks for Filling Form. We'll  get back to you as soon as possible.");
           var db = firebase.firestore();

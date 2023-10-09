@@ -46,21 +46,26 @@
         firebase.initializeApp(firebaseConfig);
 
         function handleLogin() {
-            var email = document.getElementById('username').value;
-            var password = document.getElementById('password').value;
+        var email = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
 
-            firebase.auth().signInWithEmailAndPassword(email, password)
-                .then((userCredential) => {
-                    // Signed in 
-                    var user = userCredential.user;
-                    console.log('User signed in:', user);
-                })
-                .catch((error) => {
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    console.log('Error:', errorCode, errorMessage);
-                });
-        }
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                // Signed in 
+                var user = userCredential.user;
+                console.log('User signed in:', user);
+                
+                // Redirect to home page
+                window.location.href = "index-3.html";
+            })
+            .catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                console.log('Error:', errorCode, errorMessage);
+                alert('Error: Invalid Credentials'); // Feedback to user
+            });
+    }
+
     </script>
 </head>
 
